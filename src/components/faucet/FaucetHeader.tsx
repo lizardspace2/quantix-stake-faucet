@@ -14,9 +14,12 @@ export function FaucetHeader() {
       
       <div>
         <h1 className="text-3xl font-bold font-mono tracking-tight">
-          NaivecoinStake <span className="text-primary">Faucet</span>
+          QUANTIX <span className="text-primary">Faucet</span>
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-muted-foreground mt-2 text-sm">
+          Quantum Resistant Blockchain | Powered by Crystals-Dilithium
+        </p>
+        <p className="text-muted-foreground/70 mt-1 text-xs">
           Get free testnet coins by proving you run a synchronized node
         </p>
       </div>
