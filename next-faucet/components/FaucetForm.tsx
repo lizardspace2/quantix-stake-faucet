@@ -1,9 +1,12 @@
 
 "use client";
 
+
 import React, { useState } from 'react';
+import { InfoTooltip } from './InfoTooltip';
 
 export const FaucetForm = () => {
+
     const [address, setAddress] = useState('');
     const [ip, setIp] = useState('');
     const [loading, setLoading] = useState(false);
@@ -68,13 +71,16 @@ export const FaucetForm = () => {
                     />
                 </div>
 
+
                 <div className="space-y-2">
-                    <label htmlFor="ip" className="text-sm font-bold text-slate-200 uppercase tracking-wide ml-1">
+                    <label htmlFor="ip" className="text-sm font-bold text-slate-200 uppercase tracking-wide ml-1 flex items-center">
                         Node IP:Port
+                        <InfoTooltip content="Your node must be synchronized with the network to receive QUANTIX. We verify your block height before sending." />
                     </label>
                     <input
                         id="ip"
                         type="text"
+
                         value={ip}
                         onChange={(e) => setIp(e.target.value)}
                         placeholder="127.0.0.1:6001"
@@ -102,8 +108,8 @@ export const FaucetForm = () => {
 
             {status && (
                 <div className={`p-4 rounded-xl border-l-4 text-sm font-medium shadow-md animate-in fade-in slide-in-from-bottom-2 ${status.type === 'error' ? 'bg-red-950/40 border-red-500 text-red-200' :
-                        status.type === 'success' ? 'bg-teal-950/40 border-teal-500 text-teal-200' :
-                            'bg-slate-800 border-indigo-400 text-slate-200'
+                    status.type === 'success' ? 'bg-teal-950/40 border-teal-500 text-teal-200' :
+                        'bg-slate-800 border-indigo-400 text-slate-200'
                     }`}>
                     {status.message}
                 </div>
