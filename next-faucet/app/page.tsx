@@ -4,25 +4,32 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden bg-slate-950">
 
-      {/* Background Elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl -z-10 animate-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl -z-10" />
+      {/* Background Elements - Reduced opacity for better contrast */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] -z-10" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-600/10 rounded-full blur-[120px] -z-10" />
 
-      <div className="z-10 text-center mb-12 space-y-4 max-w-2xl">
-        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2">
-          Naivecoin<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-500">Stake</span>
+      <div className="z-10 text-center mb-16 space-y-6 max-w-3xl px-4">
+        <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-white drop-shadow-lg">
+          QUANTIX
         </h1>
-        <p className="text-xl text-slate-400 font-light">
-          Incentivizing the Post-Quantum Network.
+        <p className="text-2xl md:text-3xl text-slate-300 font-light leading-snug">
+          Quantum Resistant Blockchain
+          <span className="block text-lg md:text-xl text-slate-400 mt-2 font-normal">
+            Powered by <span className="text-teal-400 font-medium">Crystals-Dilithium</span>
+          </span>
         </p>
-        <p className="text-sm text-slate-500 bg-slate-900/50 inline-block px-4 py-1 rounded-full border border-slate-800">
-          Node Reward Program
-        </p>
+
+        <div className="pt-4">
+          <span className="inline-flex items-center px-4 py-2 rounded-full border border-slate-700 bg-slate-900/80 text-slate-300 text-sm font-medium shadow-sm">
+            <span className="w-2 h-2 mr-2 bg-green-500 rounded-full animate-pulse"></span>
+            Node Reward Program Active
+          </span>
+        </div>
       </div>
 
-      <div className="w-full max-w-md z-10">
+      <div className="w-full max-w-lg z-10">
         <FaucetForm />
       </div>
 

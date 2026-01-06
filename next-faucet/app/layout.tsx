@@ -7,8 +7,8 @@ import { QuantumBanner } from "@/components/QuantumBanner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NaivecoinStake Faucet",
-  description: "Claim your Dilithium coins for running a node.",
+  title: "QUANTIX Faucet",
+  description: "Claim your QUANTIX coins for running a node.",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="border-t border-slate-800/50 p-6 text-center text-slate-500 text-sm">
-          <p>&copy; 2026 NaivecoinStake. Quantum Resistance Enabled.</p>
+          <p>&copy; 2026 QUANTIX. Quantum Resistance Enabled.</p>
         </footer>
       </body>
     </html>

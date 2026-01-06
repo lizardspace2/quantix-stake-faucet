@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
             ip_address: nodeIp // Storing Node IP as "ip_address" for now, or request IP
         });
 
-        return NextResponse.json({ message: '5 Coins sent!', txId: tx.id });
+        return NextResponse.json({ message: '5 QUANTIX sent!', txId: tx.id });
 
     } catch (e: any) {
         console.error('Handler error', e);
