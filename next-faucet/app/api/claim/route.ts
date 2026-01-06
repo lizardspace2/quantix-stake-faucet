@@ -1,14 +1,11 @@
 
+
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
 import { checkNodeStatus, getTrustedHeight, broadcastTx } from '@/lib/p2p';
 import { createTransaction, initDilithium, getPublicFromWallet } from '@/lib/wallet';
 import { UnspentTxOut } from '@/lib/transaction';
 
-// Supabase Init
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!; // Must use Service Role for strict checks if RLS is on, or just standard key if public allows inserts
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Trusted Node URL for UTXO fetching (needed for balance/signing)
 // Realistically, we need an API to fetch unspent outputs for our address
