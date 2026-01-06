@@ -1,7 +1,8 @@
 
 import { Transaction, TxIn, TxOut, UnspentTxOut, getTransactionId } from './transaction';
 import * as _ from 'lodash';
-import * as DilithiumModule from 'dilithium-crystals-js';
+
+// import * as DilithiumModule from 'dilithium-crystals-js'; // Removed to prevent load error
 
 // Environment variables should hold the faucet's private key
 const FAUCET_PRIVATE_KEY = process.env.FAUCET_PRIVATE_KEY || '';
@@ -9,11 +10,40 @@ const FAUCET_PRIVATE_KEY = process.env.FAUCET_PRIVATE_KEY || '';
 let dilithiumInstance: any = null;
 const DILITHIUM_LEVEL = 2;
 
+
 export const initDilithium = async (): Promise<void> => {
     if (dilithiumInstance === null) {
-        dilithiumInstance = await DilithiumModule;
+
+
+        try {
+            console.log('[Wallet] Loading dilithium-crystals-js via require...');
+            const factory = require('dilithium-crystals-js');
+            console.log('[Wallet] Required type:', typeof factory);
+            console.log('[Wallet] Required keys:', Object.keys(factory));
+
+            // Temporary: Just try to use it directly if it seems to be the module
+            // avoiding 'await' on the module object itself if it's not a promise
+            if (factory.default) {
+                dilithiumInstance = await factory.default;
+            } else {
+                // Inspect if it is a promise before awaiting, or just assign
+                if (factory instanceof Promise || typeof factory.then === 'function') {
+                    dilithiumInstance = await factory;
+                } else {
+                    dilithiumInstance = factory;
+                }
+            }
+            console.log('[Wallet] Dilithium loaded successfully');
+        } catch (e: any) {
+
+
+            console.error('[Wallet] Failed to load Dilithium:', e);
+            throw new Error(`Failed to load Dilithium: ${e.message}`);
+        }
     }
 };
+
+
 
 export const getDilithiumSync = (): any => {
     if (dilithiumInstance === null) {
@@ -22,19 +52,22 @@ export const getDilithiumSync = (): any => {
     return dilithiumInstance;
 };
 
+
 export const getPublicFromWallet = (): string => {
     if (!FAUCET_PRIVATE_KEY) {
-        throw new Error('FAUCET_PRIVATE_KEY not set');
+        throw new Error('FAUCET_PRIVATE_KEY environment variable is not set.');
     }
     try {
         const keyPair = JSON.parse(FAUCET_PRIVATE_KEY);
-        // Assuming the stored key is in the format { publicKey: [...], privateKey: [...] }
+        if (!keyPair.publicKey) {
+            throw new Error('Invalid Key Format: Missing publicKey');
+        }
         return Buffer.from(keyPair.publicKey).toString('hex');
-    } catch (error) {
-        // Fallback or error handling if key format differs
-        throw new Error('Invalid key format in Env Var');
+    } catch (error: any) {
+        throw new Error(`Failed to parse FAUCET_PRIVATE_KEY: ${error.message}`);
     }
 };
+
 
 export const getPublicKey = (privateKey: string): string => {
     const keyPair = JSON.parse(privateKey);

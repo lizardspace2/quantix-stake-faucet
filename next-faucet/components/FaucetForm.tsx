@@ -16,6 +16,7 @@ export const FaucetForm = () => {
         e.preventDefault();
         setLoading(true);
         setStatus({ type: 'info', message: 'Verifying node status and claiming QUANTIX...' });
+        console.log('Submitting claim:', { address, nodeIp: ip });
 
         try {
             const res = await fetch('/api/claim', {

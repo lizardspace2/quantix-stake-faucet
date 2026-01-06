@@ -1,7 +1,7 @@
 
 import * as _ from 'lodash';
 import * as CryptoJS from 'crypto-js';
-import * as DilithiumModule from 'dilithium-crystals-js';
+
 
 // Minimal Tx implementation for Faucet
 
