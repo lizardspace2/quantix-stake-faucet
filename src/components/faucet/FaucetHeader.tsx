@@ -1,0 +1,30 @@
+import { Droplets, AlertTriangle } from 'lucide-react';
+
+export function FaucetHeader() {
+  return (
+    <div className="text-center space-y-4">
+      <div className="flex justify-center">
+        <div className="relative">
+          <Droplets className="h-16 w-16 text-primary" />
+          <div className="absolute inset-0 h-16 w-16 text-primary blur-xl opacity-50">
+            <Droplets className="h-16 w-16" />
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h1 className="text-3xl font-bold font-mono tracking-tight">
+          NaivecoinStake <span className="text-primary">Faucet</span>
+        </h1>
+        <p className="text-muted-foreground mt-2">
+          Get free testnet coins by proving you run a synchronized node
+        </p>
+      </div>
+
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-sm">
+        <AlertTriangle className="h-4 w-4" />
+        <span>Demo Mode - Claims stored locally</span>
+      </div>
+    </div>
+  );
+}
