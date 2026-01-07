@@ -1,5 +1,6 @@
 
 import { FaucetForm } from "@/components/FaucetForm";
+import { FomoStatus } from "@/components/FomoStatus";
 import Image from "next/image";
 
 export default function Home() {
@@ -28,6 +29,8 @@ export default function Home() {
           </span>
         </div>
       </div>
+
+      <FomoStatus />
 
       <div className="w-full max-w-lg z-10">
         <FaucetForm />

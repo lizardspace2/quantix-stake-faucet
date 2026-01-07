@@ -98,7 +98,33 @@ export async function POST(req: NextRequest) {
         }
         console.log('[API] Node sync verfied');
 
-        // 4. Create Transaction
+        // 4. Calculate Distribution Amount
+        console.log('[API] Calculating distribution amount...');
+        const { count: totalClaims, error: countError } = await supabase
+            .from('faucet_claims')
+            .select('*', { count: 'exact', head: true });
+
+        if (countError) {
+            console.error('[API] Failed to get total claims count:', countError);
+            return NextResponse.json({ error: 'Database error counting claims' }, { status: 500 });
+        }
+
+        let amount = 5;
+        const count = totalClaims || 0;
+
+        if (count <= 10) {
+            amount = 50;
+        } else if (count <= 50) {
+            amount = 25;
+        } else if (count <= 100) {
+            amount = 10;
+        } else {
+            amount = 5;
+        }
+
+        console.log(`[API] Total Claims: ${count}, Distribution Amount: ${amount}`);
+
+        // 5. Create Transaction
         console.log('[API] Fetching faucet wallet info...');
         const faucetAddress = getPublicFromWallet();
         console.log(`[API] Faucet PubKey: ${faucetAddress}`);
@@ -110,16 +136,16 @@ export async function POST(req: NextRequest) {
         const availableBalance = unspentTxOuts.reduce((a, b) => a + b.amount, 0);
         console.log(`[API] Available Balance: ${availableBalance}`);
 
-        if (availableBalance < 5) {
+        if (availableBalance < amount) {
             console.log('[API] Insufficient balance');
             return NextResponse.json({ error: 'Faucet is empty, please try again later.' }, { status: 503 });
         }
 
         console.log('[API] Creating transaction...');
-        const tx = createTransaction(address, 5, unspentTxOuts, []);
+        const tx = createTransaction(address, amount, unspentTxOuts, []);
         console.log(`[API] Transaction created: ${tx.id}`);
 
-        // 5. Broadcast
+        // 6. Broadcast
         console.log('[API] Broadcasting transaction...');
         const broadcastSuccess = await broadcastTx(tx);
         console.log(`[API] Broadcast result: ${broadcastSuccess}`);
@@ -129,16 +155,16 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Failed to broadcast transaction' }, { status: 500 });
         }
 
-        // 6. Record Claim
+        // 7. Record Claim
         console.log('[API] Recording claim...');
         await supabase.from('faucet_claims').insert({
             address: address,
-            amount: 5,
+            amount: amount,
             ip_address: nodeIp
         });
         console.log('[API] Claim recorded!');
 
-        return NextResponse.json({ message: '5 QUANTIX sent!', txId: tx.id });
+        return NextResponse.json({ message: `${amount} QUANTIX sent!`, txId: tx.id });
 
     } catch (e: any) {
         console.error(`[API] EXCEPTION: ${e.message}`);
