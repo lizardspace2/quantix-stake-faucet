@@ -1,6 +1,7 @@
 
 import { FaucetForm } from "@/components/FaucetForm";
 import { FomoStatus } from "@/components/FomoStatus";
+import { Logo } from "@/components/Logo";
 import Image from "next/image";
 
 export default function Home() {
@@ -12,9 +13,10 @@ export default function Home() {
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-600/10 rounded-full blur-[120px] -z-10" />
 
       <div className="z-10 text-center mb-16 space-y-6 max-w-3xl px-4">
-        <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-white drop-shadow-lg">
-          QUANTIX
-        </h1>
+        <Logo
+          className="justify-center mb-8"
+          iconClassName="h-24 w-24"
+        />
         <p className="text-2xl md:text-3xl text-slate-300 font-light leading-snug">
           Quantum Resistant Blockchain
           <span className="block text-lg md:text-xl text-slate-400 mt-2 font-normal">

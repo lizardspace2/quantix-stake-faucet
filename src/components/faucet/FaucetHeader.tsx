@@ -1,17 +1,16 @@
-import { Droplets, AlertTriangle } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
+import { Logo } from '../ui/Logo';
 
 export function FaucetHeader() {
   return (
     <div className="text-center space-y-4">
       <div className="flex justify-center">
-        <div className="relative">
-          <Droplets className="h-16 w-16 text-primary" />
-          <div className="absolute inset-0 h-16 w-16 text-primary blur-xl opacity-50">
-            <Droplets className="h-16 w-16" />
-          </div>
-        </div>
+        <Logo
+          iconClassName="h-20 w-20"
+          showText={false}
+        />
       </div>
-      
+
       <div>
         <h1 className="text-3xl font-bold font-mono tracking-tight">
           QUANTIX <span className="text-primary">Faucet</span>
