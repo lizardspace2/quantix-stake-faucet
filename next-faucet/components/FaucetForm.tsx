@@ -42,77 +42,101 @@ export const FaucetForm = () => {
 
 
     return (
-        <div className="w-full max-w-lg mx-auto bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 p-6 md:p-10 rounded-2xl shadow-2xl space-y-8 ring-1 ring-white/10">
-            <div className="text-center space-y-3">
-                <h2 className="text-3xl font-extrabold text-white tracking-tight">
-                    Claim Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">QUANTIX</span>
+        <div className="glass-card w-full p-8 md:p-12 rounded-[2rem] space-y-10 relative overflow-hidden group">
+            {/* Inner Glow */}
+            <div className="absolute -top-24 -left-24 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl group-hover:bg-teal-500/20 transition-colors duration-1000" />
+            <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors duration-1000" />
+
+            <div className="text-center space-y-4 relative z-10">
+                <h2 className="text-4xl font-black text-white tracking-tight">
+                    Claim <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-purple-400 glow-text">QUANTIX</span>
                 </h2>
-                <p className="text-slate-300 text-base leading-relaxed">
-                    Enter your receiver address and Active Node IP.
-                    <br />
-                    <span className="inline-block mt-2 px-3 py-1 bg-teal-500/10 border border-teal-500/20 rounded-full text-teal-300 text-xs font-semibold uppercase tracking-wider">
-                        Limit: 5 QUANTIX / Month
+                <div className="flex flex-col items-center gap-3">
+                    <p className="text-slate-400 text-sm font-medium max-w-xs mx-auto">
+                        Validate your node status to receive the protocol-allocated reward.
+                    </p>
+                    <span className="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-teal-300 text-[10px] font-bold uppercase tracking-[0.2em]">
+                        Limit: 5 QTX / Month
                     </span>
-                </p>
+                </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                    <label htmlFor="address" className="text-sm font-bold text-slate-200 uppercase tracking-wide ml-1">
+            <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+                <div className="space-y-3">
+                    <label htmlFor="address" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2 flex justify-between items-center">
                         Receiver Address
+                        <span className="text-teal-500/50 font-mono lower-case">qtx_address</span>
                     </label>
-                    <input
-                        id="address"
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Naiv..."
-                        className="w-full bg-slate-950 border border-slate-600 rounded-xl px-4 py-4 text-white placeholder:text-slate-600 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all font-mono text-base shadow-inner"
-                        required
-                    />
+                    <div className="relative group/input">
+                        <input
+                            id="address"
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            placeholder="Naiv..."
+                            className="w-full bg-slate-950/50 border border-white/5 rounded-2xl px-6 py-5 text-white placeholder:text-slate-700 outline-none focus:border-teal-500/50 focus:ring-4 focus:ring-teal-500/10 transition-all font-mono text-base backdrop-blur-sm"
+                            required
+                        />
+                        <div className="absolute inset-0 rounded-2xl border border-teal-500/0 group-focus-within/input:border-teal-500/30 transition-all pointer-events-none" />
+                    </div>
                 </div>
 
 
-                <div className="space-y-2">
-                    <label htmlFor="ip" className="text-sm font-bold text-slate-200 uppercase tracking-wide ml-1 flex items-center">
-                        Node IP:Port
-                        <InfoTooltip content="Your node must be synchronized with the network to receive QUANTIX. We verify your block height before sending." />
-                    </label>
-                    <input
-                        id="ip"
-                        type="text"
-
-                        value={ip}
-                        onChange={(e) => setIp(e.target.value)}
-                        placeholder="127.0.0.1:6001"
-                        className="w-full bg-slate-950 border border-slate-600 rounded-xl px-4 py-4 text-white placeholder:text-slate-600 outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all font-mono text-base shadow-inner"
-                        required
-                    />
-                </div>
-
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-gradient-to-r from-teal-500 via-teal-600 to-purple-600 hover:from-teal-400 hover:to-purple-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-teal-900/30 hover:shadow-teal-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-[0.98] text-lg tracking-wide"
-                >
-                    {loading ? (
-                        <span className="flex items-center justify-center gap-3">
-                            <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Verifying...
+                <div className="space-y-3">
+                    <label htmlFor="ip" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2 flex items-center justify-between">
+                        <span className="flex items-center gap-2">
+                            Node IP:Port
+                            <InfoTooltip content="Your node must be synchronized with the network to receive QUANTIX. We verify your block height before sending." />
                         </span>
-                    ) : 'Claim 5 QUANTIX'}
-                </button>
+                        <span className="text-purple-500/50 font-mono lower-case">ipv4:port</span>
+                    </label>
+                    <div className="relative group/input">
+                        <input
+                            id="ip"
+                            type="text"
+
+                            value={ip}
+                            onChange={(e) => setIp(e.target.value)}
+                            placeholder="127.0.0.1:6001"
+                            className="w-full bg-slate-950/50 border border-white/5 rounded-2xl px-6 py-5 text-white placeholder:text-slate-700 outline-none focus:border-purple-500/50 focus:ring-4 focus:ring-purple-500/10 transition-all font-mono text-base backdrop-blur-sm"
+                            required
+                        />
+                        <div className="absolute inset-0 rounded-2xl border border-purple-500/0 group-focus-within/input:border-purple-500/30 transition-all pointer-events-none" />
+                    </div>
+                </div>
+
+                <div className="pt-4">
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="group/btn relative w-full h-16 bg-white text-slate-950 font-black rounded-2xl shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.3)] transition-all disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-[0.98] text-sm uppercase tracking-[0.2em] overflow-hidden"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-400 to-purple-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+                        <span className="relative z-10 group-hover/btn:text-white transition-colors duration-300 flex items-center justify-center gap-3">
+                            {loading ? (
+                                <>
+                                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    Verifying...
+                                </>
+                            ) : 'Request Rewards'}
+                        </span>
+                    </button>
+                </div>
             </form>
 
             {status && (
-                <div className={`p-4 rounded-xl border-l-4 text-sm font-medium shadow-md animate-in fade-in slide-in-from-bottom-2 ${status.type === 'error' ? 'bg-red-950/40 border-red-500 text-red-200' :
-                    status.type === 'success' ? 'bg-teal-950/40 border-teal-500 text-teal-200' :
-                        'bg-slate-800 border-indigo-400 text-slate-200'
+                <div className={`p-5 rounded-2xl border text-xs font-bold tracking-wide animate-in fade-in slide-in-from-bottom-4 duration-500 ${status.type === 'error' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
+                    status.type === 'success' ? 'bg-teal-500/10 border-teal-500/20 text-teal-400' :
+                        'bg-slate-500/10 border-slate-500/20 text-slate-400'
                     }`}>
-                    {status.message}
+                    <div className="flex items-start gap-3">
+                        {status.type === 'error' && <span className="text-lg">✕</span>}
+                        {status.type === 'success' && <span className="text-lg">✓</span>}
+                        <p className="leading-relaxed">{status.message}</p>
+                    </div>
                 </div>
             )}
         </div>
