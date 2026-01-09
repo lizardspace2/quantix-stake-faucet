@@ -17,9 +17,9 @@ export default function Home() {
         </div>
 
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
             Node Rewards Program
-          </h1>
+          </h2>
           <p className="text-xl md:text-2xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed">
             Quantum-Resistant Layer 1 Infrastructure.
             <span className="block text-base md:text-lg text-teal-400/80 mt-2 font-medium tracking-wide uppercase">

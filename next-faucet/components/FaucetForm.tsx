@@ -48,9 +48,9 @@ export const FaucetForm = () => {
             <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors duration-1000" />
 
             <div className="text-center space-y-4 relative z-10">
-                <h2 className="text-4xl font-black text-white tracking-tight">
+                <h1 className="text-4xl font-black text-white tracking-tight">
                     Claim <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-purple-400 glow-text">QUANTIX</span>
-                </h2>
+                </h1>
                 <div className="flex flex-col items-center gap-3">
                     <p className="text-slate-400 text-sm font-medium max-w-xs mx-auto">
                         Validate your node status to receive the protocol-allocated reward.

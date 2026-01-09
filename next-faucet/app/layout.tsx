@@ -5,8 +5,36 @@ import { QuantumBanner } from "@/components/QuantumBanner";
 import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
-  title: "QUANTIX Faucet",
-  description: "Claim your QUANTIX coins for running a node.",
+  title: "QUANTIX Faucet | Claim Quantum-Resistant Node Rewards",
+  description: "Secure your portal to the future. Claim your QUANTIX (QTX) node rewards on our quantum-resistant Layer 1 infrastructure powered by Crystals-Dilithium cryptography.",
+  keywords: ["Quantix", "QTX", "Faucet", "Crypto Faucet", "Quantum Resistant", "Crystals-Dilithium", "Post-Quantum Cryptography", "Layer 1", "Blockchain", "Node Rewards"],
+  authors: [{ name: "QUANTIX FOUNDATION" }],
+  openGraph: {
+    title: "QUANTIX Faucet | Quantum-Resistant Node Rewards",
+    description: "Claim your QUANTIX (QTX) coins on our hyper-secure post-quantum blockchain infrastructure.",
+    url: "https://faucet.quantumresistantcoin.com",
+    siteName: "QUANTIX Faucet",
+    images: [
+      {
+        url: "https://quantumresistantcoin.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "QUANTIX Faucet - Quantum Resistant Blockchain",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "QUANTIX Faucet | Quantum-Resistant Node Rewards",
+    description: "Claim QTX coins on the world's first post-quantum secure Layer 1.",
+    images: ["https://quantumresistantcoin.com/twitter-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
