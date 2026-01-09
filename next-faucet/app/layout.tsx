@@ -66,25 +66,27 @@ export default function RootLayout({
             <a href="/" className="hover:opacity-80 transition-opacity">
               <Logo showText={true} iconClassName="h-8 w-8" />
             </a>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 md:gap-6">
               <a
                 href="https://quantumresistantcoin.com"
-                className="text-xs font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-[0.2em]"
+                className="hidden md:block text-xs font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-[0.2em]"
               >
                 Website
               </a>
               <a
                 href="https://quantumresistantcoin.com#roadmap"
-                className="text-xs font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-[0.2em]"
+                className="hidden md:block text-xs font-bold text-slate-400 hover:text-white transition-colors uppercase tracking-[0.2em]"
               >
                 Roadmap
               </a>
-              <div className="h-4 w-[1px] bg-white/10" />
+              <div className="hidden md:block h-4 w-[1px] bg-white/10" />
               <a
                 href="https://quantumresistantcoin.com"
-                className="px-4 py-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 text-[10px] font-black uppercase tracking-widest hover:bg-teal-500/20 transition-all"
+                className="px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest hover:bg-teal-500/20 transition-all"
               >
-                Enter Ecosystem
+                {/* Shorten text on very small screens if needed, but for now we just make button smaller */}
+                <span className="hidden sm:inline">Enter Ecosystem</span>
+                <span className="sm:hidden">Enter Site</span>
               </a>
             </div>
           </div>
@@ -96,28 +98,28 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="relative z-10 border-t border-white/5 bg-slate-950/20 backdrop-blur-md p-12 text-center text-slate-500 text-sm">
-          <div className="max-w-7xl mx-auto flex flex-col items-center gap-6">
+        <footer className="relative z-10 border-t border-white/5 bg-slate-950/20 backdrop-blur-md p-8 md:p-12 text-center text-slate-500 text-sm">
+          <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
             <a
               href="https://quantumresistantcoin.com"
               className="group block"
             >
               <Logo
                 className="opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform group-hover:scale-105"
-                iconClassName="h-10 w-10"
+                iconClassName="h-8 w-8 md:h-10 md:w-10"
                 showText={true}
               />
             </a>
 
-            <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-[9px] md:text-[10px] font-black tracking-widest uppercase">
               <a href="https://quantumresistantcoin.com" className="hover:text-teal-400 transition-colors">Main Website</a>
               <a href="https://quantumresistantcoin.com/whitepaper" className="hover:text-teal-400 transition-colors">Whitepaper</a>
               <a href="https://github.com/quantix-project" className="hover:text-teal-400 transition-colors">Github</a>
             </div>
 
-            <div className="space-y-2">
-              <p className="font-medium text-slate-400 tracking-wide uppercase text-[10px]">&copy; 2026 QUANTIX FOUNDATION</p>
-              <p className="opacity-60">Architecting Hyper-Secure Quantum-Resistant Infrastructure</p>
+            <div className="space-y-2 px-6">
+              <p className="font-medium text-slate-400 tracking-wide uppercase text-[9px] md:text-[10px]">&copy; 2026 QUANTIX FOUNDATION</p>
+              <p className="opacity-60 text-[11px] md:text-[13px] leading-relaxed">Architecting Hyper-Secure Quantum-Resistant Infrastructure</p>
             </div>
           </div>
         </footer>
