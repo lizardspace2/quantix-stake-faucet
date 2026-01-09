@@ -8,7 +8,7 @@ export interface Claim {
   nodeIp: string;
 }
 
-const STORAGE_KEY = 'naivecoinstake_faucet_claims';
+const STORAGE_KEY = 'quantix_faucet_claims';
 const MAX_COINS_PER_ADDRESS = 5;
 const COINS_PER_CLAIM = 5;
 
@@ -44,7 +44,7 @@ export function useFaucetClaims() {
 
   const addClaim = useCallback((address: string, nodeIp: string): Claim | null => {
     if (!canClaim(address)) return null;
-    
+
     const newClaim: Claim = {
       id: crypto.randomUUID(),
       address,
@@ -52,7 +52,7 @@ export function useFaucetClaims() {
       timestamp: Date.now(),
       nodeIp,
     };
-    
+
     saveClaims([newClaim, ...claims]);
     return newClaim;
   }, [claims, canClaim, saveClaims]);

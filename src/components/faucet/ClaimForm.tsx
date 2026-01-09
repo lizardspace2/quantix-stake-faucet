@@ -44,12 +44,12 @@ export function ClaimForm({ onClaim, canClaim, getRemainingAmount, coinsPerClaim
       setErrors(fieldErrors);
       return false;
     }
-    
+
     if (!canClaim(address)) {
       setErrors({ address: 'This address has already claimed the maximum amount' });
       return false;
     }
-    
+
     setErrors({});
     return true;
   }, [address, nodeIp, canClaim]);
@@ -58,16 +58,16 @@ export function ClaimForm({ onClaim, canClaim, getRemainingAmount, coinsPerClaim
     e.preventDefault();
     setClaimSuccess(false);
     setVerificationPassed(null);
-    
+
     if (!validateForm()) return;
-    
+
     setIsVerifying(true);
   };
 
   const handleVerificationComplete = useCallback((success: boolean) => {
     setIsVerifying(false);
     setVerificationPassed(success);
-    
+
     if (success) {
       const claimed = onClaim(address, nodeIp);
       if (claimed) {
@@ -88,7 +88,7 @@ export function ClaimForm({ onClaim, canClaim, getRemainingAmount, coinsPerClaim
           Request Coins
         </CardTitle>
         <CardDescription>
-          Claim up to {coinsPerClaim} NaivecoinStake coins per address
+          Claim up to {coinsPerClaim} Quantix coins per address
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -133,8 +133,8 @@ export function ClaimForm({ onClaim, canClaim, getRemainingAmount, coinsPerClaim
             )}
           </div>
 
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full font-mono"
             disabled={isVerifying || !address || !nodeIp}
           >
