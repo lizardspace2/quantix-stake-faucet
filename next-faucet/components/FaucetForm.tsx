@@ -42,7 +42,7 @@ export const FaucetForm = () => {
 
 
     return (
-        <div className="glass-card w-full p-6 md:p-12 rounded-[1.5rem] md:rounded-[2rem] space-y-8 md:space-y-10 relative overflow-hidden group">
+        <div className="glass-card w-full p-6 md:p-12 rounded-[1.5rem] md:rounded-[2rem] space-y-8 md:space-y-10 relative overflow-hidden group hover:-translate-y-1 transition-all duration-500 animate-fade-in-up delay-200">
             {/* Inner Glow */}
             <div className="absolute -top-24 -left-24 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl group-hover:bg-teal-500/20 transition-colors duration-1000" />
             <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors duration-1000" />
@@ -74,7 +74,7 @@ export const FaucetForm = () => {
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             placeholder="qtx..."
-                            className="w-full bg-slate-950/50 border border-white/5 rounded-xl md:rounded-2xl px-5 py-4 md:px-6 md:py-5 text-white placeholder:text-slate-700 outline-none focus:border-teal-500/50 focus:ring-4 focus:ring-teal-500/10 transition-all font-mono text-sm md:text-base backdrop-blur-sm"
+                            className="w-full bg-slate-950/50 border border-white/5 rounded-xl md:rounded-2xl px-5 py-4 md:px-6 md:py-5 text-white placeholder:text-slate-700 outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/30 focus:shadow-[0_0_20px_rgba(45,212,191,0.1)] transition-all font-mono text-sm md:text-base backdrop-blur-sm"
                             required
                         />
                         <div className="absolute inset-0 rounded-xl md:rounded-2xl border border-teal-500/0 group-focus-within/input:border-teal-500/30 transition-all pointer-events-none" />
@@ -98,7 +98,7 @@ export const FaucetForm = () => {
                             value={ip}
                             onChange={(e) => setIp(e.target.value)}
                             placeholder="127.0.0.1:6001"
-                            className="w-full bg-slate-950/50 border border-white/5 rounded-xl md:rounded-2xl px-5 py-4 md:px-6 md:py-5 text-white placeholder:text-slate-700 outline-none focus:border-purple-500/50 focus:ring-4 focus:ring-purple-500/10 transition-all font-mono text-sm md:text-base backdrop-blur-sm"
+                            className="w-full bg-slate-950/50 border border-white/5 rounded-xl md:rounded-2xl px-5 py-4 md:px-6 md:py-5 text-white placeholder:text-slate-700 outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/30 focus:shadow-[0_0_20px_rgba(168,85,247,0.1)] transition-all font-mono text-sm md:text-base backdrop-blur-sm"
                             required
                         />
                         <div className="absolute inset-0 rounded-xl md:rounded-2xl border border-purple-500/0 group-focus-within/input:border-purple-500/30 transition-all pointer-events-none" />
@@ -112,6 +112,7 @@ export const FaucetForm = () => {
                         className="group/btn relative w-full h-14 md:h-16 bg-white text-slate-950 font-black rounded-xl md:rounded-2xl shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)] md:shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.3)] transition-all disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-[0.98] text-[11px] md:text-sm uppercase tracking-[0.2em] overflow-hidden"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-400 to-purple-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 animate-shimmer opacity-0 group-hover/btn:opacity-20 pointer-events-none" />
                         <span className="relative z-10 group-hover/btn:text-white transition-colors duration-300 flex items-center justify-center gap-3">
                             {loading ? (
                                 <>
