@@ -82,11 +82,17 @@ export default function RootLayout({
               <div className="hidden md:block h-4 w-[1px] bg-white/10" />
               <a
                 href="https://quantumresistantcoin.com"
-                className="px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest hover:bg-teal-500/20 transition-all"
+                className="group px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-slate-800/50 border border-white/10 text-slate-300 hover:text-white hover:bg-slate-800 hover:border-teal-500/50 text-[10px] md:text-xs font-bold uppercase tracking-wider transition-all flex items-center"
               >
                 {/* Shorten text on very small screens if needed, but for now we just make button smaller */}
-                <span className="hidden sm:inline">Enter Ecosystem</span>
-                <span className="sm:hidden">Enter Site</span>
+                <span className="hidden sm:inline flex items-center gap-2">
+                  <svg className="w-3 h-3 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                  Back to Main Site
+                </span>
+                <span className="sm:hidden flex items-center gap-2">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                  Main Site
+                </span>
               </a>
             </div>
           </div>
