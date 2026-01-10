@@ -50,7 +50,7 @@ export const FomoStatus = () => {
                     </div>
                 </div>
                 <div className="text-right">
-                    <p className="text-lg md:text-xl font-black text-teal-400 glow-text">5.00 QTX</p>
+                    <p className="text-lg md:text-xl font-display font-black text-teal-400 glow-text">5.00 QTX</p>
                     <p className="text-[9px] md:text-[10px] text-slate-500 font-mono">per valid claim</p>
                 </div>
             </div>
@@ -75,7 +75,7 @@ export const FomoStatus = () => {
                 </div>
 
                 <div>
-                    <div className="text-4xl md:text-6xl font-black text-white drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                    <div className="text-4xl md:text-6xl font-display font-black text-white drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]">
                         {status.currentReward} <span className="text-xl md:text-2xl text-orange-300 transition-opacity group-hover:opacity-80">QTX</span>
                     </div>
                     <p className="text-orange-200/60 font-medium text-[11px] md:text-sm mt-2 md:mt-3 tracking-wide">

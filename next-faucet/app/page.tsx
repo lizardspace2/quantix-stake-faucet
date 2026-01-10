@@ -17,7 +17,7 @@ export default function Home() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl md:text-6xl font-black text-white tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
+          <h2 className="text-3xl md:text-6xl font-display font-black text-white tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
             Node Rewards Program
           </h2>
           <p className="text-lg md:text-2xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed px-4">

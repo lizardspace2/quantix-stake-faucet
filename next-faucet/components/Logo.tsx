@@ -60,7 +60,7 @@ export const Logo: React.FC<LogoProps> = ({
             </div>
 
             {showText && (
-                <span className="font-black tracking-tighter text-2xl text-white">
+                <span className="font-display font-black tracking-tighter text-2xl text-white uppercase">
                     QUANTIX
                 </span>
             )}
