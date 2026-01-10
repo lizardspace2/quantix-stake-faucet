@@ -35,6 +35,22 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: "https://faucet.quantumresistantcoin.com",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "QUANTIX Faucet",
+  "url": "https://faucet.quantumresistantcoin.com",
+  "description": "Claim your QUANTIX (QTX) node rewards on our quantum-resistant Layer 1 infrastructure.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://faucet.quantumresistantcoin.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
 };
 
 export default function RootLayout({
@@ -50,6 +66,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-screen bg-slate-950 text-slate-100 selection:bg-teal-500/30 overflow-x-hidden antialiased" suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Quantum Background */}
         <div className="quantum-bg">
           <div className="quantum-mesh-node top-[-10%] left-[-10%] bg-teal-500/10" />
